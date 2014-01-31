@@ -1,0 +1,280 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <title>BBC Research and Development: Audio Waveforms</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="Author" content="Chris Finch">
+
+  <!-- Styles -->
+
+  <link href="vendor/house-style.min.css" rel="stylesheet" type="text/css" />
+  <link href="vendor/peaks.css" rel="stylesheet" type="text/css" />
+  <style>
+
+    .project-header h1 {
+      font-weight: 100;
+    }
+
+    .ecosystem h2 {
+      margin-top: 0;
+    }
+
+    .ecosystem ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .ecosystem li {
+      margin: 0 0 6px 0;
+    }
+
+    .ecosystem li a,
+    .ecosystem li .desc {
+      display: block;
+    }
+
+
+    #peaks-container {
+      width: 100%;
+      /*height: 400px;*/
+      margin: 12px auto;
+    }
+
+    #peaks-container > div > div {
+      height: 200px;
+      margin: 0 0 6px 0;
+      background-color: #fefefe;
+      border: 1px solid #eaeaea;
+      -webkit-box-shadow: 0 0 3px #a0a0a0;
+         -moz-box-shadow: 0 0 3px #a0a0a0;
+              box-shadow: 0 0 3px #a0a0a0;
+    }
+
+    #peaks-container > div > div:last-child {
+      margin: 0;
+    }
+
+    .introduction > * {
+      margin-left: 8px !important;
+    }
+
+    .workflow img {
+      display: block;
+      margin: 0 auto;
+    }
+
+    footer {
+      margin: 48px 0 0 0;
+      position: relative;
+      bottom: 0;
+    }
+
+    .peaks-control > * {
+      float: left;
+      margin: 0 12px 0 0;
+    }
+
+    .button {
+      -webkit-border-radius: 5px;
+         -moz-border-radius: 5px;
+              border-radius: 5px;
+      font-size: 14px;
+      text-align: center;
+      display: inline-block;
+      -webkit-box-shadow: -1px -1px 1px 0px #ccc inset, 0 0 0 2px #eee;
+         -moz-box-shadow: -1px -1px 1px 0px #ccc inset, 0 0 0 2px #eee;
+              box-shadow: -1px -1px 1px 0px #ccc inset, 0 0 0 2px #eee;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      -webkit-box-shadow: 1px 1px 1px 0px #ccc inset, 0 0 0 2px #eee;
+         -moz-box-shadow: 1px 1px 1px 0px #ccc inset, 0 0 0 2px #eee;
+              box-shadow: 1px 1px 1px 0px #ccc inset, 0 0 0 2px #eee;
+    }
+
+    .audio_licence {
+      float: right;
+      font-size: 11px;
+      margin: 12px 0;
+      height: 36px;
+      line-height: 12px;
+      width: 40%;
+    }
+
+    .audio_licence a:hover {
+      color: #fff;
+    }
+
+    .audio_licence img {
+      float: left;
+      margin: 0 12px 0 0;
+    }
+
+  </style>
+
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <link href="assets/style_ie.css" rel="stylesheet" type="text/css" />
+  <![endif]-->
+
+</head>
+
+<body class="home">
+
+    <header class="masthead">
+      <div class="grid">
+        <div class="grid-col grid-12">
+          <span class="masterbrand">BBC</span>
+          <span class="dept">Research &amp; Development</span>
+        </div>
+      </div><!-- .grid -->
+    </header>
+
+    <div class="grid">
+
+      <div class="grid-row clearfix">
+        <div class="project-header with-border ph-with-toolbar grid-col grid-12 clearfix">
+          <div>
+            <h1>Peaks.js</h1>
+          </div>
+          <!--
+            <div class="ph-toolbar">
+            (toolbar items)
+            </div>
+          -->
+        </div>
+      </div>
+
+      <div class="grid-row clearfix panel-full-height">
+        <div class="panel grid-col grid-8 introduction">
+          <h1 class="hd">Browser-based audio waveform visualisation</h1>
+          <p class="intro">Peaks.js encompasses a suite of software tools designed to allow users to view and interact with audio waveform material in the browser.</p>
+          <p>Peaks.js uses the HTML5 <b>&lt;canvas&gt;</b> element to display waveform data at different zoom levels, and synchronise the display to playback of an associated <b>&lt;audio&gt;</b> element. The component provides some basic convenience methods for interacting with waveforms and regions of time in the audio, e.g., for distinguishing music from speech, or identifying different music tracks.</p>
+          <p> For more information on this project, please read <a href="http://www.bbc.co.uk/rd/blog/2013/10/audio-waveforms">this article</a> on the BBC R&amp;D blog.</a></p>
+
+          <div class="workflow">
+            <h2 class="hd">Workflow</h2>
+            <img src="waveform_workflow.png" alt="waveform workflow" />
+          </div>
+        </div><!-- .grid-8 -->
+
+        <div class="grid-col grid-4 ecosystem panel control-panel">
+          <h2 class="hd">Source Code</h2>
+          <ul>
+            <li>
+              <h3><a href="https://github.com/bbcrd/audiowaveform">audiowaveform</a></h3>
+              <span class="desc">C++ program that generates waveform data files from MP3 or WAV format audio.</span>
+            </li>
+            <li>
+              <h3><a href="https://github.com/bbcrd/audio_waveform-ruby">audio_waveform-ruby</a></h3>
+              <span class="desc">A Ruby gem that can read and write waveform data files.</span>
+            </li>
+            <li>
+              <h3><a href="https://github.com/bbcrd/waveform-data.js">waveform-data.js</a></h3>
+              <span class="desc">JavaScript library that provides access to precomputed waveform data files, or can generate waveform data using the Web Audio API.</span>
+            </li>
+            <li>
+              <h3><a href="https://github.com/bbcrd/peaks.js">peaks.js</a></h3>
+              <span class="desc">JavaScript UI component for interacting with waveforms.</span>
+            </li>
+          </ul>
+          <h2 class="hd">Project Team</h2>
+          <p>Software design and development by
+          <a href="http://www.bbc.co.uk/rd/people/chris-finch">Chris Finch</a>,
+          <a href="http://www.bbc.co.uk/rd/people/thomas-parisot">Thomas Parisot</a>,
+          and <a href="http://www.bbc.co.uk/rd/people/chris-needham">Chris Needham</a>.</p>
+          <h2 class="hd">Contact Us</h2>
+          <p>If you have questions, comments or suggestions, please get in touch:
+            <a href="mailto:irfs@bbc.co.uk">irfs@bbc.co.uk</a>.
+          </p>
+        </div><!-- .grid-4 -->
+      </div><!-- .grid-row -->
+
+      <div class="grid-row clearfix">
+        <div class="grid-col grid-12">
+          <h2>Example Demo</h2>
+          <div id="peaks-container"></div>
+          <div class="peaks-control">
+            <div class="peaks-audio">
+              <audio id="peaks-audio" controls=controls>
+                <source src="test_data/TOL_6min_720p_download.mp3" type="audio/mpeg">
+                <source src="test_data/TOL_6min_720p_download.ogg" type="audio/ogg">
+                Your browser does not support the audio element.
+              </audio>
+            </div>
+            <button id="zoomIn" class="button">Zoom In</button>
+            <button id="zoomOut" class="button">Zoom Out</button>
+            <button id="segment" class="button">Create Segment</button>
+          </div>
+        </div><!-- .grid-12 -->
+      </div><!-- .grid-row -->
+
+    </div><!-- .grid -->
+
+    <footer class="masthead">
+      <div class="grid">
+        <span>&copy; Copyright 2013 BBC Research and Development</span>
+        <span class="audio_licence"><img src="cc-logo.png" alt="" height="36">The audio in this demo is taken from the <a href="http://www.wellcometreeoflife.org/">Wellcome Trust's Tree of Life video</a>, used under the terms of the <a href="http://creativecommons.org/licenses/by-nc-sa/2.0/uk/">Creative Commons Attribution-NonCommercial-ShareAlike 2.0 UK: England &amp; Wales license</a>.</span>
+      </div>
+    </footer>
+
+
+    <script src="bower_components/KineticJS/index.js"></script>
+    <script src="bower_components/eventEmitter/EventEmitter.js"></script>
+    <script src="bower_components/waveform-data/dist/waveform-data.min.js"></script>
+    <script src="vendor/peaks.min.js" type="text/javascript"></script>
+
+    <script>
+      (function(d){
+        var p = peaks.init({
+          /** REQUIRED OPTIONS **/
+          container: document.getElementById('peaks-container'), // Containing element
+          audioElement: document.getElementById('peaks-audio'), // HTML5 Audio element for audio track
+          dataUri: 'test_data/TOL_6min_720p_download.dat', // URI to waveform data file in binary or JSON
+
+          /** Optional config with defaults **/
+          height: 200, // height of the waveform canvases in pixels
+          zoomLevels: [512, 1024, 2048, 4096], // Array of zoom levels in samples per pixel (big >> small)
+          keyboard: false, // Bind keyboard controls
+          nudgeIncrement: 0.01, // Keyboard nudge increment in seconds (left arrow/right arrow)
+          inMarkerColor: '#a0a0a0', // Colour for the in marker of segments
+          outMarkerColor: '#a0a0a0', // Colour for the out marker of segments
+          zoomWaveformColor: 'rgba(0, 225, 128, 1)', // Colour for the zoomed in waveform
+          overviewWaveformColor: 'rgba(0,0,0,0.2)', // Colour for the overview waveform
+          segmentColor: 'rgba(255, 161, 39, 1)', // Colour for segments on the waveform
+          randomizeSegmentColor: true, // Random colour per segment (overrides segmentColor)
+
+          segments: [{
+            startTime: 63.0,
+            endTime: 125.5,
+            editable: true,
+            color: "#E7003E",
+            labelText: "Chapter: Multi-celled organisms"
+          },
+            {
+              startTime: 225.0,
+              endTime: 267.0,
+              editable: true,
+              color: "#E7003E",
+              labelText: "Chapter: Reptiles"
+            }]
+        });
+
+        d.getElementById("zoomIn").addEventListener("click", p.zoom.zoomIn.bind(p));
+        d.getElementById("zoomOut").addEventListener("click", p.zoom.zoomOut.bind(p));
+        d.getElementById("segment").addEventListener("click", function (event) {
+          startTime = p.time.getCurrentTime();
+          endTime = startTime + 10;
+          segmentEditable = true;
+
+          p.segments.addSegment(startTime, endTime, segmentEditable);
+        });
+      })(document);
+
+    </script>
+</body>
+</html>
