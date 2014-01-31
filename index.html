@@ -118,7 +118,6 @@
 
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <link href="assets/style_ie.css" rel="stylesheet" type="text/css" />
   <![endif]-->
 
 </head>
@@ -201,8 +200,8 @@
           <div class="peaks-control">
             <div class="peaks-audio">
               <audio id="peaks-audio" controls=controls>
-                <source src="test_data/TOL_6min_720p_download.mp3" type="audio/mpeg">
-                <source src="test_data/TOL_6min_720p_download.ogg" type="audio/ogg">
+                <source src="data/sample.mp3" type="audio/mpeg">
+                <source src="data/sample.ogg" type="audio/ogg">
                 Your browser does not support the audio element.
               </audio>
             </div>
@@ -234,7 +233,7 @@
           /** REQUIRED OPTIONS **/
           container: document.getElementById('peaks-container'), // Containing element
           audioElement: document.getElementById('peaks-audio'), // HTML5 Audio element for audio track
-          dataUri: 'test_data/TOL_6min_720p_download.dat', // URI to waveform data file in binary or JSON
+          dataUri: 'data/sample.dat', // URI to waveform data file in binary or JSON
 
           /** Optional config with defaults **/
           height: 200, // height of the waveform canvases in pixels
@@ -245,23 +244,15 @@
           outMarkerColor: '#a0a0a0', // Colour for the out marker of segments
           zoomWaveformColor: 'rgba(0, 225, 128, 1)', // Colour for the zoomed in waveform
           overviewWaveformColor: 'rgba(0,0,0,0.2)', // Colour for the overview waveform
-          segmentColor: 'rgba(255, 161, 39, 1)', // Colour for segments on the waveform
+          segmentColor: '#0993e3', // Colour for segments on the waveform
           randomizeSegmentColor: true, // Random colour per segment (overrides segmentColor)
 
           segments: [{
-            startTime: 63.0,
-            endTime: 125.5,
-            editable: true,
-            color: "#E7003E",
-            labelText: "Chapter: Multi-celled organisms"
-          },
-            {
-              startTime: 225.0,
-              endTime: 267.0,
-              editable: true,
-              color: "#E7003E",
-              labelText: "Chapter: Reptiles"
-            }]
+            startTime: 16.5,
+            endTime: 20.8,
+            color: "#0993e3",
+            labelText: "That was't very good to see."
+          }]
         });
 
         d.getElementById("zoomIn").addEventListener("click", p.zoom.zoomIn.bind(p));
