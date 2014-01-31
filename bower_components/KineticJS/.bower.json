@@ -1,0 +1,15 @@
+{
+  "name": "KineticJS",
+  "_cacheHeaders": {
+    "ETag": "\"45142aa5bcc4c8f0a4c2fcd653db374b\"",
+    "Last-Modified": "Sun, 28 Jul 2013 18:09:13 GMT",
+    "Content-Length": "89896",
+    "Content-Type": "application/x-javascript"
+  },
+  "_release": "e-tag:45142aa5b",
+  "main": "index.js",
+  "_source": "http://d3lp1msu2r81bx.cloudfront.net/kjs/js/lib/kinetic-v4.5.5.min.js",
+  "_target": "*",
+  "_originalSource": "http://d3lp1msu2r81bx.cloudfront.net/kjs/js/lib/kinetic-v4.5.5.min.js",
+  "_direct": true
+}
