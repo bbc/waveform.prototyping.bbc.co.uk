@@ -1,125 +1,14 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-  <title>BBC Research and Development: Audio Waveforms</title>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8">
+  <title>Web Media Waveforms — BBC Research and Development</title>
   <meta name="Author" content="Chris Finch">
-
-  <!-- Styles -->
-
-  <link href="vendor/house-style.min.css" rel="stylesheet" type="text/css" />
-  <link href="vendor/peaks.css" rel="stylesheet" type="text/css" />
-  <style>
-
-    .project-header h1 {
-      font-weight: 100;
-    }
-
-    .ecosystem h2 {
-      margin-top: 0;
-    }
-
-    .ecosystem ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .ecosystem li {
-      margin: 0 0 6px 0;
-    }
-
-    .ecosystem li a,
-    .ecosystem li .desc {
-      display: block;
-    }
-
-
-    #peaks-container {
-      width: 100%;
-      /*height: 400px;*/
-      margin: 12px auto;
-    }
-
-    #peaks-container > div > div {
-      height: 200px;
-      margin: 0 0 6px 0;
-      background-color: #fefefe;
-      border: 1px solid #eaeaea;
-      -webkit-box-shadow: 0 0 3px #a0a0a0;
-         -moz-box-shadow: 0 0 3px #a0a0a0;
-              box-shadow: 0 0 3px #a0a0a0;
-    }
-
-    #peaks-container > div > div:last-child {
-      margin: 0;
-    }
-
-    .introduction > * {
-      margin-left: 8px !important;
-    }
-
-    .workflow img {
-      display: block;
-      margin: 0 auto;
-    }
-
-    footer {
-      margin: 48px 0 0 0;
-      position: relative;
-      bottom: 0;
-    }
-
-    .peaks-control > * {
-      float: left;
-      margin: 0 12px 0 0;
-    }
-
-    .button {
-      -webkit-border-radius: 5px;
-         -moz-border-radius: 5px;
-              border-radius: 5px;
-      font-size: 14px;
-      text-align: center;
-      display: inline-block;
-      -webkit-box-shadow: -1px -1px 1px 0px #ccc inset, 0 0 0 2px #eee;
-         -moz-box-shadow: -1px -1px 1px 0px #ccc inset, 0 0 0 2px #eee;
-              box-shadow: -1px -1px 1px 0px #ccc inset, 0 0 0 2px #eee;
-      border: 1px solid #ccc;
-      background-color: #fff;
-      cursor: pointer;
-    }
-
-    .button:hover {
-      -webkit-box-shadow: 1px 1px 1px 0px #ccc inset, 0 0 0 2px #eee;
-         -moz-box-shadow: 1px 1px 1px 0px #ccc inset, 0 0 0 2px #eee;
-              box-shadow: 1px 1px 1px 0px #ccc inset, 0 0 0 2px #eee;
-    }
-
-    .audio_licence {
-      float: right;
-      font-size: 11px;
-      margin: 12px 0;
-      height: 36px;
-      line-height: 12px;
-      width: 40%;
-    }
-
-    .audio_licence a:hover {
-      color: #fff;
-    }
-
-    .audio_licence img {
-      float: left;
-      margin: 0 12px 0 0;
-    }
-
-  </style>
-
+  <link href="vendor/house-style.min.css" rel="stylesheet" type="text/css">
+  <link href="vendor/peaks.css" rel="stylesheet" type="text/css">
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-
 </head>
 
 <body class="home">
@@ -207,7 +96,8 @@
             </div>
             <button id="zoomIn" class="button">Zoom In</button>
             <button id="zoomOut" class="button">Zoom Out</button>
-            <button id="segment" class="button">Create Segment</button>
+            <button id="add-segment" class="button">Create Segment</button>
+            <button id="add-point" class="button">Create Point</button>
           </div>
         </div><!-- .grid-12 -->
       </div><!-- .grid-row -->
@@ -222,50 +112,8 @@
     </footer>
 
 
-    <script src="bower_components/KineticJS/index.js"></script>
-    <script src="bower_components/eventEmitter/EventEmitter.js"></script>
-    <script src="bower_components/waveform-data/dist/waveform-data.min.js"></script>
-    <script src="vendor/peaks.min.js" type="text/javascript"></script>
-
-    <script>
-      (function(d){
-        var p = peaks.init({
-          /** REQUIRED OPTIONS **/
-          container: document.getElementById('peaks-container'), // Containing element
-          audioElement: document.getElementById('peaks-audio'), // HTML5 Audio element for audio track
-          dataUri: 'data/sample.dat', // URI to waveform data file in binary or JSON
-
-          /** Optional config with defaults **/
-          height: 200, // height of the waveform canvases in pixels
-          zoomLevels: [512, 1024, 2048, 4096], // Array of zoom levels in samples per pixel (big >> small)
-          keyboard: false, // Bind keyboard controls
-          nudgeIncrement: 0.01, // Keyboard nudge increment in seconds (left arrow/right arrow)
-          inMarkerColor: '#a0a0a0', // Colour for the in marker of segments
-          outMarkerColor: '#a0a0a0', // Colour for the out marker of segments
-          zoomWaveformColor: 'rgba(0, 225, 128, 1)', // Colour for the zoomed in waveform
-          overviewWaveformColor: 'rgba(0,0,0,0.2)', // Colour for the overview waveform
-          segmentColor: '#0993e3', // Colour for segments on the waveform
-          randomizeSegmentColor: true, // Random colour per segment (overrides segmentColor)
-
-          segments: [{
-            startTime: 16.5,
-            endTime: 20.8,
-            color: "#0993e3",
-            labelText: "That was't very good to see."
-          }]
-        });
-
-        d.getElementById("zoomIn").addEventListener("click", p.zoom.zoomIn.bind(p));
-        d.getElementById("zoomOut").addEventListener("click", p.zoom.zoomOut.bind(p));
-        d.getElementById("segment").addEventListener("click", function (event) {
-          startTime = p.time.getCurrentTime();
-          endTime = startTime + 10;
-          segmentEditable = true;
-
-          p.segments.addSegment(startTime, endTime, segmentEditable);
-        });
-      })(document);
-
-    </script>
+    <script src="bower_components/KineticJS/index.js" defer></script>
+    <script src="bower_components/requirejs/require.js" defer></script>
+    <script src="main.js" defer></script>
 </body>
 </html>
