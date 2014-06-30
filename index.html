@@ -88,26 +88,45 @@
           <div id="peaks-container"></div>
           <div class="peaks-control">
             <div class="peaks-audio">
-              <audio id="peaks-audio" controls=controls>
+              <audio id="peaks-audio" controls>
                 <source src="data/sample.mp3" type="audio/mpeg">
                 <source src="data/sample.ogg" type="audio/ogg">
                 Your browser does not support the audio element.
               </audio>
             </div>
-            <button id="zoomIn" class="button">Zoom In</button>
-            <button id="zoomOut" class="button">Zoom Out</button>
+
+            <div class="combined-buttons">
+              <button id="zoomIn" class="button">Zoom In</button>
+              <button id="zoomOut" class="button">Zoom Out</button>
+            </div>
             <button id="add-segment" class="button">Create Segment</button>
             <button id="add-point" class="button">Create Point</button>
           </div>
         </div><!-- .grid-12 -->
       </div><!-- .grid-row -->
 
+      <div class="grid-row" id="make-your-own">
+        <div class="grid-col grid-12">
+          <h2>Make your own</h2>
+
+          <p></p>
+        </div>
+
+        <div class="grid-col grid-6" data-droppable>
+          Drop an audio file here to update the waveform …
+        </div>
+
+        <div class="grid-col grid-6 file-upload">
+          … or upload a file <input type="file">
+        </div>
+      </div>
+
     </div><!-- .grid -->
 
     <footer class="masthead">
       <div class="grid">
-        <span>&copy; Copyright 2013 BBC Research and Development</span>
-        <span class="audio_licence"><img src="cc-logo.png" alt="" height="36">The audio in this demo is taken from the <a href="http://www.wellcometreeoflife.org/">Wellcome Trust's Tree of Life video</a>, used under the terms of the <a href="http://creativecommons.org/licenses/by-nc-sa/2.0/uk/">Creative Commons Attribution-NonCommercial-ShareAlike 2.0 UK: England &amp; Wales license</a>.</span>
+        <span>&copy; Copyright 2014 BBC Research and Development</span>
+        <span class="audio_licence"><img src="cc-logo.png" alt="" height="36">The audio in this demo is taken from the <a href="http://en.wikipedia.org/wiki/File:Alice_walker_bbc_radio4_desert_island_discs_19_05_2013.flac">radio show Desert Island</a>, used under the terms of the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons 3.0 Unported license</a>.</span>
       </div>
     </footer>
 

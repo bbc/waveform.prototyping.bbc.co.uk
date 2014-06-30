@@ -48,6 +48,53 @@ require(['peaks'], function(Peaks){
   d.getElementById("add-point").addEventListener("click", function () {
     p.points.add(p.time.getCurrentTime(), true);
   });
+
+  /*
+  Drag 'n drop your own files
+   */
+  var body = d.querySelector('body');
+  var container = d.querySelector('[data-droppable]');
+
+  body.addEventListener('dragover', activateDrag, false);
+  body.addEventListener('dragleave', deactivateDrag, false);
+  body.addEventListener('dragend', deactivateDrag, false);
+  container.addEventListener('drop', handleDrop, false);
+
+  function activateDrag(event){
+    event.preventDefault();
+    event.stopPropagation();
+
+    event.dataTransfer.dropEffect = 'copy';
+    body.classList.add('drag-active');
+  }
+
+  function handleDrop(event){
+    event.preventDefault();
+    event.stopPropagation();
+
+    var file = event.dataTransfer.files[0] || null;
+    var reader = new FileReader();
+
+    if (!file || !file.type.match(/^audio\//)){
+      return;
+    }
+
+    var audio = document.querySelector('audio');
+    audio.src = URL.createObjectURL(file);
+    audio.load();
+
+    p = Peaks.init({
+      container:    document.getElementById('peaks-container'),
+      mediaElement: document.getElementById('peaks-audio')
+    });
+  }
+
+  function deactivateDrag(event){
+    event.preventDefault();
+    event.stopPropagation();
+
+    body.classList.remove('drag-active');
+  }
 });
 
 
