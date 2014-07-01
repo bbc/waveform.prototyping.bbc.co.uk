@@ -56,18 +56,26 @@ require(['peaks'], function(Peaks){
   var container = d.querySelector('[data-droppable]');
   var uploadr = d.querySelector('[data-uploadable]');
 
-  body.addEventListener('dragover', activateDrag, false);
-  body.addEventListener('dragleave', deactivateDrag, false);
-  body.addEventListener('dragend', deactivateDrag, false);
-  container.addEventListener('drop', handleDrop, false);
+  body.addEventListener('dragover', setElementState(body, 'drag-active', true));
+  body.addEventListener('dragleave', setElementState(body, 'drag-active', false));
+  body.addEventListener('dragend', setElementState(body, 'drag-active', false));
+  container.addEventListener('drop', handleDrop);
+  container.addEventListener('dragover', setElementState(container, 'drop-active', true));
+  container.addEventListener('dragover', setElementState(container, 'drop-success', false));
+  container.addEventListener('drop', setElementState(container, 'drop-active', false));
+  container.addEventListener('dragend', setElementState(container, 'drop-active', false));
+  container.addEventListener('dragleave', setElementState(container, 'drop-active', false));
   uploadr.addEventListener('change', handleFileUpload);
 
-  function activateDrag(event){
-    event.preventDefault();
-    event.stopPropagation();
+  function setElementState(el, stateName, stateValue){
+    stateValue = typeof stateValue === 'boolean' ? stateValue : true;
 
-    event.dataTransfer.dropEffect = 'copy';
-    body.classList.add('drag-active');
+    return function stateHandler(event){
+      event.preventDefault();
+      event.stopPropagation();
+
+      el.classList[stateValue ? 'add' : 'remove'](stateName);
+    };
   }
 
   function handleDrop(event){
@@ -76,7 +84,9 @@ require(['peaks'], function(Peaks){
 
     var file = event.dataTransfer.files[0] || null;
 
-    updateWaveformFromFile(file);
+    if (updateWaveformFromFile(file)){
+      setElementState(container, 'drop-success', true)(event);
+    }
   }
 
   function handleFileUpload(event){
@@ -88,6 +98,7 @@ require(['peaks'], function(Peaks){
       return false;
     }
 
+    window.location.hash = 'generating-waveform';
     var audio = document.querySelector('audio');
     audio.src = URL.createObjectURL(file);
     audio.load();
@@ -97,14 +108,12 @@ require(['peaks'], function(Peaks){
       mediaElement: document.getElementById('peaks-audio')
     });
 
+    p.on('segments.ready', function(){
+      window.location.hash = 'waveform';
+      container.classList.remove('drop-success');
+    });
+
     return true;
-  }
-
-  function deactivateDrag(event){
-    event.preventDefault();
-    event.stopPropagation();
-
-    body.classList.remove('drag-active');
   }
 });
 

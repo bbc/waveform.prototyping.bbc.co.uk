@@ -120,6 +120,13 @@ footer {
   border: 3px dashed gray;
   clear: both;
 }
+[data-droppable].drop-active {
+  border-color: #2ECC40;
+  color: #2ECC40;
+}[data-droppable].drop-success {
+  border-color: #0074D9;
+  color: #0074D9;
+}
 
 #make-your-own .grid-6 {
   line-height: 7;
