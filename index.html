@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -109,7 +109,15 @@
         <div class="grid-col grid-12">
           <h2>Make your own</h2>
 
-          <p></p>
+          <p>
+            <em>Drag</em> or <em>select</em> an audio file in order to update the waveform accordingly.
+            <br>
+            The files can be either in MP3, WAV or OGG format.
+          </p>
+
+          <p>
+            <strong>Notice</strong>: the waveform processing is performed by your browser, thus none of your audio file will be uploaded on the Internet.
+          </p>
         </div>
 
         <div class="grid-col grid-6" data-droppable>
@@ -117,7 +125,7 @@
         </div>
 
         <div class="grid-col grid-6 file-upload">
-          … or upload a file <input type="file">
+          … or select a file <input type="file" accept="audio/*" data-uploadable>
         </div>
       </div>
 

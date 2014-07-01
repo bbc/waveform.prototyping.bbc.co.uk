@@ -54,11 +54,13 @@ require(['peaks'], function(Peaks){
    */
   var body = d.querySelector('body');
   var container = d.querySelector('[data-droppable]');
+  var uploadr = d.querySelector('[data-uploadable]');
 
   body.addEventListener('dragover', activateDrag, false);
   body.addEventListener('dragleave', deactivateDrag, false);
   body.addEventListener('dragend', deactivateDrag, false);
   container.addEventListener('drop', handleDrop, false);
+  uploadr.addEventListener('change', handleFileUpload);
 
   function activateDrag(event){
     event.preventDefault();
@@ -73,10 +75,17 @@ require(['peaks'], function(Peaks){
     event.stopPropagation();
 
     var file = event.dataTransfer.files[0] || null;
-    var reader = new FileReader();
 
+    updateWaveformFromFile(file);
+  }
+
+  function handleFileUpload(event){
+    Array.prototype.some.call(event.target.files, updateWaveformFromFile);
+  }
+
+  function updateWaveformFromFile(file){
     if (!file || !file.type.match(/^audio\//)){
-      return;
+      return false;
     }
 
     var audio = document.querySelector('audio');
@@ -87,6 +96,8 @@ require(['peaks'], function(Peaks){
       container:    document.getElementById('peaks-container'),
       mediaElement: document.getElementById('peaks-audio')
     });
+
+    return true;
   }
 
   function deactivateDrag(event){
