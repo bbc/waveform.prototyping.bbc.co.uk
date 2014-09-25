@@ -43,12 +43,11 @@ h2 {
   margin: 0 0 6px 0;
   background-color: #fefefe;
   border: 1px solid #eaeaea;
-  -webkit-box-shadow: 0 0 3px #a0a0a0;
-  -moz-box-shadow: 0 0 3px #a0a0a0;
-  box-shadow: 0 0 3px #a0a0a0;
 }
 
-#peaks-container > div > div:last-child {
+#peaks-container .overview-container {
+  border-bottom: none;
+  height: 100px;
   margin: 0;
 }
 
@@ -82,7 +81,6 @@ footer {
   font-size: 14px;
   text-align: center;
   display: inline-block;
-  box-shadow: 0 0 0 2px #eee;
   border: 1px solid #ccc;
   background-color: #fff;
   cursor: pointer;
