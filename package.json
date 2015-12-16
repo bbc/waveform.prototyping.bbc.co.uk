@@ -6,9 +6,11 @@
   "main": "main.js",
   "scripts": {
     "build": "browserify -e index.js -o bundle.js",
+    "predeploy": "NODE_ENV=production npm run build",
+    "deploy": "gh-pages -d .",
+    "start": "static -p 3000 .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "npm-run-all --parallel 'watch:*' start",
-    "start": "static -p 3000 .",
     "watch:build": "watchify -dv -e index.js -o bundle.js"
   },
   "repository": {
@@ -27,6 +29,7 @@
   },
   "devDependencies": {
     "browserify": "^12.0.1",
+    "gh-pages": "^0.8.0",
     "node-static": "^0.7.7",
     "npm-run-all": "^1.4.0",
     "watchify": "^3.6.1"
