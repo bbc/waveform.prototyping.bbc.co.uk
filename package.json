@@ -1,0 +1,37 @@
+{
+  "name": "waveform.prototyping.bbc.co.uk",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Browser-based audio waveform visualisation.",
+  "main": "main.js",
+  "scripts": {
+    "build": "browserify -e index.js -o bundle.js",
+    "predeploy": "NODE_ENV=production npm run build",
+    "deploy": "gh-pages -d .",
+    "start": "static -p 3000 .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "npm-run-all --parallel 'watch:*' start",
+    "watch:build": "watchify -dv -e index.js -o bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bbcrd/waveform.prototyping.bbc.co.uk.git"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/bbcrd/waveform.prototyping.bbc.co.uk/issues"
+  },
+  "homepage": "http://waveform.prototyping.bbc.co.uk",
+  "dependencies": {
+    "global": "^4.2.1",
+    "peaks.js": "^0.4.0"
+  },
+  "devDependencies": {
+    "browserify": "^12.0.1",
+    "gh-pages": "^0.8.0",
+    "node-static": "^0.7.7",
+    "npm-run-all": "^1.4.0",
+    "watchify": "^3.6.1"
+  }
+}
